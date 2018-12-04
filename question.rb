@@ -9,10 +9,6 @@ class Question
   end
 
   def correct?(player_answer)
-    if player_answer == @num1 + @num2
-      return true
-    else
-      return false
-    end
+    player_answer == (@num1 + @num2)
   end
 end

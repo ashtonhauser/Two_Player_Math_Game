@@ -25,8 +25,8 @@
 # current_player
 
 # responsable for calling all methods for the actual display of game
-load "question.rb"
-load "score.rb"
+require_relative "question.rb"
+require_relative "score.rb"
 
 class Game
   attr_accessor :current_player, :game_done
@@ -42,10 +42,10 @@ class Game
   end
 
   def start
-    while @game_done === false do
+    while @game_done  == false do
       @iterator += 1
 
-      if @iterator % 2 === 0
+      if @iterator % 2  == 0
        @@current_player = 2
       else
        @@current_player = 1
@@ -55,21 +55,21 @@ class Game
       puts line1.question_template
       print "> "
       answer = gets.chomp
-      if answer.to_i === line1.num1 + line1.num2
+      if answer.to_i  == line1.num1 + line1.num2
         puts @correct
       else
         puts @incorrect
-        if @@current_player === 1
+        if @@current_player  == 1
           @score.score1 -= 1
         else
           @score.score2 -= 1
         end
       end
-      if @score.score2 === 0
+      if @score.score2  == 0
         puts "Player 1 wins with a score of #{@score.score1}/3"
         puts "----- GAME OVER -----"
         @game_done = true
-      elsif @score.score1 === 0
+      elsif @score.score1  == 0
         puts "Player 2 wins with a score of #{@score.score2}/3"
         puts "----- GAME OVER -----"
         @game_done = true
